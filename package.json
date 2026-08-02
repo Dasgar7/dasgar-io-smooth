@@ -1,0 +1,25 @@
+{
+  "name": "dasgar-io-smooth",
+  "version": "1.0.0",
+  "description": "Smooth agar.io clone - mobile-first multiplayer web game with client-side prediction and entity interpolation",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "socket.io": "^4.7.5"
+  },
+  "keywords": [
+    "agar.io",
+    "multiplayer",
+    "game",
+    "socket.io",
+    "pwa"
+  ],
+  "license": "MIT"
+}
