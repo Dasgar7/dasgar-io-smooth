@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="screen-orientation" content="landscape" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <title>dasgar.io — Smooth</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- Orientation prompt -->
+  <div id="orientation-prompt">
+    <div class="prompt-box">
+      <div class="rotate-icon">↻</div>
+      <p>Please rotate your device to landscape</p>
+    </div>
+  </div>
+
+  <!-- Nickname / Start screen -->
+  <div id="start-screen">
+    <div class="panel">
+      <h1>dasgar.io</h1>
+      <p class="subtitle">smooth agar.io clone</p>
+      <input type="text" id="nickname" placeholder="Nickname" maxlength="15" autocomplete="off" />
+      <button id="play-btn">Play</button>
+      <p class="hint">Mouse / WASD / touch joystick to move<br>Space or Split btn to split · W or Eject to feed</p>
+    </div>
+  </div>
+
+  <!-- Death / Respawn screen -->
+  <div id="death-screen" class="hidden">
+    <div class="panel">
+      <h2>You were eaten</h2>
+      <p id="final-score">Mass: 0</p>
+      <button id="respawn-btn">Play Again</button>
+      <button id="spectate-btn" class="secondary">Spectate</button>
+    </div>
+  </div>
+
+  <!-- Game canvas -->
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="leaderboard">
+      <div class="lb-title">Leaderboard</div>
+      <ol id="lb-list"></ol>
+    </div>
+    <div id="stats">
+      <span id="mass-display">Mass: 10</span>
+    </div>
+  </div>
+
+  <!-- Mobile controls -->
+  <div id="mobile-controls" class="hidden">
+    <div id="joystick-zone">
+      <div id="joystick-base">
+        <div id="joystick-knob"></div>
+      </div>
+    </div>
+    <div id="action-buttons">
+      <button id="split-btn" class="action-btn">Split</button>
+      <button id="eject-btn" class="action-btn">Eject</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/renderer.js"></script>
+  <script src="/js/controls.js"></script>
+  <script src="/js/client.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
